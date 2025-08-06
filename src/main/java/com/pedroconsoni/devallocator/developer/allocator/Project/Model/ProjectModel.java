@@ -19,27 +19,4 @@ public class ProjectModel {
     @OneToMany(mappedBy = "projectModel")
     private List<DeveloperModel> developerModels;
 
-    public ProjectModel() {
-    }
-
-    public ProjectModel(String nome, String dificuldade) {
-        this.nome = nome;
-        this.dificuldade = dificuldade;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getDificuldade() {
-        return dificuldade;
-    }
-
-    public void setDificuldade(String dificuldade) {
-        this.dificuldade = dificuldade;
-    }
 }

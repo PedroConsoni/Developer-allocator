@@ -1,7 +1,10 @@
-package com.pedroconsoni.devallocator.developer.allocator.Model;
+package com.pedroconsoni.devallocator.developer.allocator.Developer.Model;
 
+import com.pedroconsoni.devallocator.developer.allocator.Project.Model.ProjectModel;
 import jakarta.persistence.*;
 import org.springframework.boot.autoconfigure.web.WebProperties;
+
+import java.util.List;
 
 @Entity
 @Table(name = "tb_developer")
@@ -13,6 +16,11 @@ public class DeveloperModel {
     private String nome;
     private String email;
     private int idade;
+
+    // Vários desenvolvedores para um único projeto
+    @ManyToOne
+    @JoinColumn(name = "project_id") // Foreing Key ou chave estrangeira
+    private ProjectModel projectModel;
 
     public DeveloperModel() {
     }

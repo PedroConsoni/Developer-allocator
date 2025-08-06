@@ -16,8 +16,12 @@ public class DeveloperModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String nome;
+
+    @Column(unique = true)
     private String email;
+
     private int idade;
 
     // Vários desenvolvedores para um único projeto

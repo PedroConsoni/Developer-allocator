@@ -15,14 +15,17 @@ public class DeveloperModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
-    private String nome;
+    @Column(name = "name")
+    private String name;
 
     @Column(unique = true)
     private String email;
 
-    private int idade;
+    @Column(name = "age")
+    private int age;
 
     // Vários desenvolvedores para um único projeto
     @ManyToOne

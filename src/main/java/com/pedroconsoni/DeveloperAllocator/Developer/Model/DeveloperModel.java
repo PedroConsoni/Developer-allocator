@@ -1,7 +1,7 @@
-package com.pedroconsoni.DeveloperAllocator.Model;
+package com.pedroconsoni.DeveloperAllocator.Developer.Model;
 
+import com.pedroconsoni.DeveloperAllocator.Project.Model.ProjectModel;
 import jakarta.persistence.*;
-import org.springframework.boot.autoconfigure.web.WebProperties;
 
 @Entity
 @Table(name = "tb_developer")
@@ -10,9 +10,20 @@ public class DeveloperModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
+
+    @Column(name = "email")
     private String email;
+
+    @Column(name = "name")
     private String name;
+
+    @Column(name = "age")
     private int age;
+
+    @Column(name = "project")
+    @ManyToOne
+    @JoinColumn(name = "project_id")
+    private ProjectModel project;
 
     public DeveloperModel() {
     }

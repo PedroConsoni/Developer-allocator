@@ -1,4 +1,4 @@
-package com.pedroconsoni.DeveloperAllocator.Controller;
+package com.pedroconsoni.DeveloperAllocator.Developer.Controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -1,4 +1,4 @@
-package com.pedroconsoni.DeveloperAllocator.Projects.Controller;
+package com.pedroconsoni.DeveloperAllocator.Project.Controller;
 
-public class ProjectsController {
+public class ProjectController {
 }

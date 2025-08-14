@@ -26,7 +26,6 @@ public class DeveloperModel {
     @Column(name = "age")
     private int age;
 
-    @Column(name = "project")
     @ManyToOne
     @JoinColumn(name = "project_id")
     private ProjectModel project;

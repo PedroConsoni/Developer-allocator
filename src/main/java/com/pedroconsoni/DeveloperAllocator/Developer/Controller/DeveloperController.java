@@ -2,13 +2,8 @@ package com.pedroconsoni.DeveloperAllocator.Developer.Controller;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping
+@RequestMapping("/developer")
 public class DeveloperController {
-
-    @GetMapping("/hello")
-    public String hello() {
-        return "Hello";
-    }
 
     // Add developer
     @PostMapping("/add")

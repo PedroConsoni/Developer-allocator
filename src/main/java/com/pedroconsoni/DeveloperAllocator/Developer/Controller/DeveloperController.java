@@ -1,11 +1,8 @@
 package com.pedroconsoni.DeveloperAllocator.Developer.Controller;
-
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping
-
-
 public class DeveloperController {
 
     @GetMapping("/hello")
@@ -20,15 +17,15 @@ public class DeveloperController {
     }
 
     // List all registered developers
-    @GetMapping("/all")
+    @GetMapping("/showall")
     public String showAllDevelopers() {
         return "Show all developers";
     }
 
     // List registered developers by ID
-    @GetMapping("/allid")
+    @GetMapping("/showid")
     public String showDevelopersByID() {
-        return "show developers by id";
+        return "Show developers by id";
     }
 
     // Change developer data

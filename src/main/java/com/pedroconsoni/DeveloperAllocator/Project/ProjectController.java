@@ -5,28 +5,28 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("project")
 public class ProjectController {
 
-    // Add project
-    @PostMapping("/add")
+    // Create project
+    @PostMapping("/create")
     public String createProject() {
-        return "Project add";
+        return "Create Project";
     }
 
     // List all registered projects
-    @GetMapping("/showall")
-    public String showProject() {
-        return "Show all project";
+    @GetMapping("/list")
+    public String listProject() {
+        return "List project";
     }
 
     // List registered projects by ID
-    @GetMapping("/showid")
-    public String showDevelopersByID() {
-        return "Show developers by id";
+    @GetMapping("/listid")
+    public String listDevelopersByID() {
+        return "List developer by id";
     }
 
     // Change project data
     @PutMapping("/changeid")
     public String changeProject() {
-        return "Change developers by ID";
+        return "Change developer by ID";
     }
 
     // Delete project

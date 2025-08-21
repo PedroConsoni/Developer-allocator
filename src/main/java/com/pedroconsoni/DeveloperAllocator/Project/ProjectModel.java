@@ -1,6 +1,7 @@
-package com.pedroconsoni.DeveloperAllocator.Project.Model;
+package com.pedroconsoni.DeveloperAllocator.Project;
 
-import com.pedroconsoni.DeveloperAllocator.Developer.Model.DeveloperModel;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.pedroconsoni.DeveloperAllocator.Developer.DeveloperModel;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -27,6 +28,7 @@ public class ProjectModel {
     private String difficulty;
 
     @OneToMany(mappedBy = "project")
+    @JsonIgnore
     private List<DeveloperModel> developer;
 
 }

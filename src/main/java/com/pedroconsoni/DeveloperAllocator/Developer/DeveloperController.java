@@ -30,7 +30,7 @@ public class DeveloperController {
     public String changeDeveloperByID() { return "Change developer by id"; }
 
     // Delete developer
-    @DeleteMapping("/deleteid")
-    public String deleteByID() { return "Developer delete by ID"; }
+    @DeleteMapping("/delete/{id}")
+    public void deleteDeveloperByID(@PathVariable Long id) { developerService.deleteDeveloperByID(id); }
 
 }

@@ -25,21 +25,19 @@ public class ProjectController {
     public List<ProjectModel> listProject() { return projectService.listProject(); }
 
     // List registered projects by ID
-    @GetMapping("/listid")
-    public String listDevelopersByID() {
-        return "List developer by id";
-    }
+    @GetMapping("/list/{id}")
+    public ProjectModel listProjectsByID(@PathVariable Long id) { return projectService.listProjectByID(id); }
 
     // Change project data
     @PutMapping("/changeid")
     public String changeProject() {
-        return "Change developer by ID";
+        return "Change project by ID";
     }
 
     // Delete project
     @DeleteMapping("/deleteid")
     public String deleteProject() {
-        return "Developer delete by ID";
+        return "Project delete by ID";
     }
 
 

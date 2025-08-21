@@ -33,4 +33,14 @@ public class DeveloperService {
         developerRepository.deleteById(id);
     }
 
+    // Update developer
+    public DeveloperModel updateDeveloperByID(Long id, DeveloperModel updatedDeveloper) {
+        if (developerRepository.existsById(id)) {
+            updatedDeveloper.setId(id);
+            return developerRepository.save(updatedDeveloper);
+        }
+        return null;
+    }
+
+
 }

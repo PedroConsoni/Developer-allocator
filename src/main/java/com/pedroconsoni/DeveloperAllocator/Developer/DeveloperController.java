@@ -25,9 +25,9 @@ public class DeveloperController {
     @GetMapping("/list/{id}")
     public DeveloperModel listDeveloperByID(@PathVariable Long id) { return developerService.listDeveloperByID(id); }
 
-    // Change developer data
-    @PutMapping("/changeid")
-    public String changeDeveloperByID() { return "Change developer by id"; }
+    // Update developer data
+    @PutMapping("/update/{id}")
+    public DeveloperModel updateDeveloperByID(@PathVariable Long id, @RequestBody DeveloperModel updatedDeveloper) { return developerService.updateDeveloperByID(id, updatedDeveloper); }
 
     // Delete developer
     @DeleteMapping("/delete/{id}")

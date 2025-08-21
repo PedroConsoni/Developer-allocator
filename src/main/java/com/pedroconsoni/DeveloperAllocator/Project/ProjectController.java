@@ -1,4 +1,5 @@
 package com.pedroconsoni.DeveloperAllocator.Project;
+import com.pedroconsoni.DeveloperAllocator.Developer.DeveloperModel;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,8 +17,8 @@ public class ProjectController {
 
     // Create project
     @PostMapping("/create")
-    public String createProject() {
-        return "Create Project";
+    public ProjectModel createProject(@RequestBody ProjectModel projectModel) {
+        return projectService.createProject(projectModel);
     }
 
     // List all registered projects

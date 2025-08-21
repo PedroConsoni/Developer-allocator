@@ -22,4 +22,9 @@ public class ProjectService {
         Optional<ProjectModel> projectByID = projectRepository.findById(id);
         return projectByID.orElse(null);
     }
+
+    // Create new project
+    public ProjectModel createProject(ProjectModel projectModel) {
+        return projectRepository.save(projectModel);
+    }
 }

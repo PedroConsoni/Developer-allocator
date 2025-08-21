@@ -23,4 +23,9 @@ public class DeveloperService {
         return developerByID.orElse(null);
     }
 
+    // Create new developer
+    public DeveloperModel createDeveloper(DeveloperModel developerModel) {
+        return developerRepository.save(developerModel);
+    }
+
 }

@@ -15,7 +15,7 @@ public class DeveloperController {
 
     // Create developer
     @PostMapping("/create")
-    public String createDeveloper() { return "Developer create"; }
+    public DeveloperModel createDeveloper(@RequestBody DeveloperModel developerModel) { return developerService.createDeveloper(developerModel); }
 
     // List all registered developers
     @GetMapping("/list")

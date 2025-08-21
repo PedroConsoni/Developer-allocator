@@ -1,9 +1,18 @@
-package com.pedroconsoni.DeveloperAllocator.Project.Controller;
+package com.pedroconsoni.DeveloperAllocator.Project;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("project")
 public class ProjectController {
+
+    private ProjectService projectService;
+
+    public ProjectController(ProjectService projectService) {
+        this.projectService = projectService;
+
+    }
 
     // Create project
     @PostMapping("/create")
@@ -13,9 +22,7 @@ public class ProjectController {
 
     // List all registered projects
     @GetMapping("/list")
-    public String listProject() {
-        return "List project";
-    }
+    public List<ProjectModel> listProject() { return projectService.listProject(); }
 
     // List registered projects by ID
     @GetMapping("/listid")

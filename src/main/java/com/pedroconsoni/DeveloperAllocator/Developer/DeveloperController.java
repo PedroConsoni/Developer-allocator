@@ -1,6 +1,4 @@
-package com.pedroconsoni.DeveloperAllocator.Developer.Controller;
-import com.pedroconsoni.DeveloperAllocator.Developer.Model.DeveloperModel;
-import com.pedroconsoni.DeveloperAllocator.Developer.Service.DeveloperService;
+package com.pedroconsoni.DeveloperAllocator.Developer;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

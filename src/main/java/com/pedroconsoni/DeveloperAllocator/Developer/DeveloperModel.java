@@ -1,6 +1,6 @@
-package com.pedroconsoni.DeveloperAllocator.Developer.Model;
+package com.pedroconsoni.DeveloperAllocator.Developer;
 
-import com.pedroconsoni.DeveloperAllocator.Project.Model.ProjectModel;
+import com.pedroconsoni.DeveloperAllocator.Project.ProjectModel;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;

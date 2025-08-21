@@ -1,6 +1,4 @@
-package com.pedroconsoni.DeveloperAllocator.Developer.Service;
-import com.pedroconsoni.DeveloperAllocator.Developer.Model.DeveloperModel;
-import com.pedroconsoni.DeveloperAllocator.Developer.Repository.DeveloperRepository;
+package com.pedroconsoni.DeveloperAllocator.Developer;
 import org.springframework.stereotype.Service;
 import java.util.List;
 

@@ -27,6 +27,9 @@ public class ProjectModel {
     @Column(name = "difficulty")
     private String difficulty;
 
+    @Column(name = "type")
+    private String type;
+
     @OneToMany(mappedBy = "project")
     @JsonIgnore
     private List<DeveloperModel> developer;

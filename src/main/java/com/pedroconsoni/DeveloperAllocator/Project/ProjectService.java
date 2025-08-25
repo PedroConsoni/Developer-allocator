@@ -1,6 +1,7 @@
 package com.pedroconsoni.DeveloperAllocator.Project;
 import com.pedroconsoni.DeveloperAllocator.Developer.DeveloperModel;
 import com.pedroconsoni.DeveloperAllocator.Developer.DeveloperRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
@@ -9,8 +10,10 @@ import java.util.Optional;
 public class ProjectService {
 
     private ProjectRepository projectRepository;
+    private final DeveloperRepository developerRepository;
 
-    public ProjectService(ProjectRepository projectRepository) {
+    public ProjectService(DeveloperRepository developerRepository, ProjectRepository projectRepository) {
+        this.developerRepository = developerRepository;
         this.projectRepository = projectRepository;
     }
 

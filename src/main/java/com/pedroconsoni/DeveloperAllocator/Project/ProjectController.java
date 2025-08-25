@@ -17,8 +17,8 @@ public class ProjectController {
 
     // Create project
     @PostMapping("/create")
-    public ProjectModel createProject(@RequestBody ProjectModel projectModel) {
-        return projectService.createProject(projectModel);
+    public ProjectDTO createProject(@RequestBody ProjectDTO projectDTO) {
+        return projectService.createProject(projectDTO);
     }
 
     // List all registered projects

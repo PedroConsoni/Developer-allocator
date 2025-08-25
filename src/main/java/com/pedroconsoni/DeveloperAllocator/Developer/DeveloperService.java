@@ -7,9 +7,11 @@ import java.util.Optional;
 public class DeveloperService {
 
     private DeveloperRepository developerRepository;
+    private DeveloperMapper developerMapper;
 
-    public DeveloperService(DeveloperRepository developerRepository) {
+    public DeveloperService(DeveloperRepository developerRepository, DeveloperMapper developerMapper) {
         this.developerRepository = developerRepository;
+        this.developerMapper = developerMapper;
     }
 
     // List all developers
@@ -24,8 +26,10 @@ public class DeveloperService {
     }
 
     // Create new developer
-    public DeveloperModel createDeveloper(DeveloperModel developerModel) {
-        return developerRepository.save(developerModel);
+    public DeveloperDTO createDeveloper(DeveloperDTO developerDTO) {
+        DeveloperModel developer = developerMapper.map(developerDTO);
+        developer = developerRepository.save(developer);
+        return developerMapper.map(developer);
     }
 
     // Delete developer by ID

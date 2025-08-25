@@ -10,11 +10,11 @@ import java.util.Optional;
 public class ProjectService {
 
     private ProjectRepository projectRepository;
-    private final DeveloperRepository developerRepository;
+    private ProjectMapper projectMapper;
 
-    public ProjectService(DeveloperRepository developerRepository, ProjectRepository projectRepository) {
-        this.developerRepository = developerRepository;
+    public ProjectService(ProjectRepository projectRepository, ProjectMapper projectMapper) {
         this.projectRepository = projectRepository;
+        this.projectMapper = projectMapper;
     }
 
     // List all projects
@@ -29,8 +29,10 @@ public class ProjectService {
     }
 
     // Create new project
-    public ProjectModel createProject(ProjectModel projectModel) {
-        return projectRepository.save(projectModel);
+    public ProjectDTO createProject(ProjectDTO projectDTO) {
+        ProjectModel project = projectMapper.map(projectDTO);
+        project = projectRepository.save(project);
+        return projectMapper.map(project);
     }
 
     // Delete project by ID

@@ -2,6 +2,7 @@ package com.pedroconsoni.DeveloperAllocator.Developer;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class DeveloperService {
@@ -15,14 +16,17 @@ public class DeveloperService {
     }
 
     // List all developers
-    public List<DeveloperModel> listDeveloper() {
-        return developerRepository.findAll();
+    public List<DeveloperDTO> listDeveloper() {
+        List<DeveloperModel> developers = developerRepository.findAll();
+        return developers.stream()
+                .map(developerMapper::map)
+                .collect(Collectors.toList());
     }
 
     // List developers by ID
-    public DeveloperModel listDeveloperByID(Long id) {
+    public DeveloperDTO listDeveloperByID(Long id) {
         Optional<DeveloperModel> developerByID = developerRepository.findById(id);
-        return developerByID.orElse(null);
+        return developerByID.map(developerMapper::map).orElse(null);
     }
 
     // Create new developer
@@ -38,10 +42,13 @@ public class DeveloperService {
     }
 
     // Update developer
-    public DeveloperModel updateDeveloperByID(Long id, DeveloperModel updatedDeveloper) {
-        if (developerRepository.existsById(id)) {
+    public DeveloperDTO updateDeveloperByID(Long id, DeveloperDTO developerDTO) {
+        Optional<DeveloperModel> existingDeveloper = developerRepository.findById(id);
+        if (existingDeveloper.isPresent()) {
+            DeveloperModel updatedDeveloper = developerMapper.map(developerDTO);
             updatedDeveloper.setId(id);
-            return developerRepository.save(updatedDeveloper);
+            DeveloperModel developerSaved = developerRepository.save(updatedDeveloper);
+            return developerMapper.map(developerSaved);
         }
         return null;
     }

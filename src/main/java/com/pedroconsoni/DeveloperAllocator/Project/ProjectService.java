@@ -5,6 +5,7 @@ import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class ProjectService {
@@ -18,14 +19,17 @@ public class ProjectService {
     }
 
     // List all projects
-    public List<ProjectModel> listProject() {
-        return projectRepository.findAll();
+    public List<ProjectDTO> listProject() {
+        List<ProjectModel> projects = projectRepository.findAll();
+        return projects.stream()
+                .map(projectMapper::map)
+                .collect(Collectors.toList());
     }
 
     // List projects by ID
-    public ProjectModel listProjectByID(Long id) {
+    public ProjectDTO listProjectByID(Long id) {
         Optional<ProjectModel> projectByID = projectRepository.findById(id);
-        return projectByID.orElse(null);
+        return projectByID.map(projectMapper::map).orElse(null);
     }
 
     // Create new project
@@ -41,10 +45,13 @@ public class ProjectService {
     }
 
     // Update project
-    public ProjectModel updateProjectByID(Long id, ProjectModel updatedProject) {
-        if (projectRepository.existsById(id)) {
+    public ProjectDTO updateProjectByID(Long id, ProjectDTO projectDTO) {
+        Optional<ProjectModel> existingProject = projectRepository.findById(id);
+        if (existingProject.isPresent()) {
+            ProjectModel updatedProject = projectMapper.map(projectDTO);
             updatedProject.setId(id);
-            return projectRepository.save(updatedProject);
+            ProjectModel projectSaved = projectRepository.save(updatedProject);
+            return projectMapper.map(projectSaved);
         }
         return null;
     }

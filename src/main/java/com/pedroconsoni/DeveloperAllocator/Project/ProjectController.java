@@ -1,4 +1,5 @@
 package com.pedroconsoni.DeveloperAllocator.Project;
+import com.pedroconsoni.DeveloperAllocator.Developer.DeveloperDTO;
 import com.pedroconsoni.DeveloperAllocator.Developer.DeveloperModel;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,15 +24,15 @@ public class ProjectController {
 
     // List all registered projects
     @GetMapping("/list")
-    public List<ProjectModel> listProject() { return projectService.listProject(); }
+    public List<ProjectDTO> listProject() { return projectService.listProject(); }
 
     // List registered projects by ID
     @GetMapping("/list/{id}")
-    public ProjectModel listProjectsByID(@PathVariable Long id) { return projectService.listProjectByID(id); }
+    public ProjectDTO listProjectsByID(@PathVariable Long id) { return projectService.listProjectByID(id); }
 
     // Update project data
     @PutMapping("/update/{id}")
-    public ProjectModel updateProjectByID(@PathVariable Long id, @RequestBody ProjectModel updatedProject) {
+    public ProjectDTO updateProjectByID(@PathVariable Long id, @RequestBody ProjectDTO updatedProject) {
         return projectService.updateProjectByID(id, updatedProject);
     }
 

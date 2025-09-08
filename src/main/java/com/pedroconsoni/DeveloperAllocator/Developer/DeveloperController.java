@@ -15,19 +15,19 @@ public class DeveloperController {
 
     // Create developer
     @PostMapping("/create")
-    public DeveloperModel createDeveloper(@RequestBody DeveloperModel developerModel) { return developerService.createDeveloper(developerModel); }
+    public DeveloperDTO createDeveloper(@RequestBody DeveloperDTO developerDTO) { return developerService.createDeveloper(developerDTO); }
 
     // List all registered developers
     @GetMapping("/list")
-    public List<DeveloperModel> listDeveloper() { return developerService.listDeveloper(); }
+    public List<DeveloperDTO> listDeveloper() { return developerService.listDeveloper(); }
 
     // List registered developers by ID
     @GetMapping("/list/{id}")
-    public DeveloperModel listDeveloperByID(@PathVariable Long id) { return developerService.listDeveloperByID(id); }
+    public DeveloperDTO listDeveloperByID(@PathVariable Long id) { return developerService.listDeveloperByID(id); }
 
     // Update developer data
     @PutMapping("/update/{id}")
-    public DeveloperModel updateDeveloperByID(@PathVariable Long id, @RequestBody DeveloperModel updatedDeveloper) { return developerService.updateDeveloperByID(id, updatedDeveloper); }
+    public DeveloperDTO updateDeveloperByID(@PathVariable Long id, @RequestBody DeveloperDTO updatedDeveloper) { return developerService.updateDeveloperByID(id, updatedDeveloper); }
 
     // Delete developer
     @DeleteMapping("/delete/{id}")

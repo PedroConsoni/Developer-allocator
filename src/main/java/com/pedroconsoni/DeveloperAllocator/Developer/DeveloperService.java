@@ -7,8 +7,8 @@ import java.util.stream.Collectors;
 @Service
 public class DeveloperService {
 
-    private DeveloperRepository developerRepository;
-    private DeveloperMapper developerMapper;
+    private final DeveloperRepository developerRepository;
+    private final DeveloperMapper developerMapper;
 
     public DeveloperService(DeveloperRepository developerRepository, DeveloperMapper developerMapper) {
         this.developerRepository = developerRepository;

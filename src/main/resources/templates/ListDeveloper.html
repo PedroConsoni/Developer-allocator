@@ -1,0 +1,32 @@
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Developer Table</title>
+</head>
+<body>
+<h1>List of developers</h1>
+<table>
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Email</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Project</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each = "developer: ${developer}">
+
+        <td th:text="${developer.id}"></td>
+        <td th:text="${developer.email}"></td>
+        <td th:text="${developer.name}"></td>
+        <td th:text="${developer.age}"></td>
+        <td th:text="${developer.project}"></td>
+
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

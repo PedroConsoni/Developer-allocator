@@ -12,10 +12,12 @@ public class ProjectService {
 
     private final ProjectRepository projectRepository;
     private final ProjectMapper projectMapper;
+    private final DeveloperRepository developerRepository;
 
-    public ProjectService(ProjectRepository projectRepository, ProjectMapper projectMapper) {
+    public ProjectService(ProjectRepository projectRepository, ProjectMapper projectMapper, DeveloperRepository developerRepository) {
         this.projectRepository = projectRepository;
         this.projectMapper = projectMapper;
+        this.developerRepository = developerRepository;
     }
 
     // List all projects
@@ -40,8 +42,18 @@ public class ProjectService {
     }
 
     // Delete project by ID
+    @Transactional
     public void deleteProjectByID(Long id) {
-        projectRepository.deleteById(id);
+        ProjectModel project = projectRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Project not found"));
+
+        for (DeveloperModel developer : project.getDeveloper()) {
+            developer.setProject(null);
+            developerRepository.save(developer);
+        }
+
+        project.getDeveloper().clear();
+        projectRepository.delete(project);
     }
 
     // Update project

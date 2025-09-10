@@ -1,0 +1,31 @@
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Project Table</title>
+</head>
+<body>
+<h1>List of projects</h1>
+<table>
+    <thead>
+    <tr>
+        <td>Id</td>
+        <td>Name</td>
+        <td>Difficulty</td>
+        <td>Type</td>
+        <td>Developer</td>
+    </tr>
+    </thead>
+
+    <tr th:each ="project: ${project}">
+
+        <td th:text="${project.id}"></td>
+        <td th:text="${project.name}"></td>
+        <td th:text="${project.difficulty}"></td>
+        <td th:text="${project.type}"></td>
+        <td th:text="${project.developer}"></td>
+
+    </tr>
+
+</table>
+</body>
+</html>

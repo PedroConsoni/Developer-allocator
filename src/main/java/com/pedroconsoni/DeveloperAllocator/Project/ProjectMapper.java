@@ -1,5 +1,7 @@
 package com.pedroconsoni.DeveloperAllocator.Project;
 
+import com.pedroconsoni.DeveloperAllocator.Developer.DeveloperDTO;
+import com.pedroconsoni.DeveloperAllocator.Developer.DeveloperModel;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -24,5 +26,20 @@ public class ProjectMapper {
         projectDTO.setDeveloper(projectModel.getDeveloper());
 
         return projectDTO;
+    }
+
+    public void updateProjectFromDto(ProjectDTO dto, ProjectModel entity) {
+        if (dto.getDifficulty() != null) {
+            entity.setDifficulty(dto.getDifficulty());
+        }
+        if (dto.getName() != null) {
+            entity.setName(dto.getName());
+        }
+        if (dto.getType() != null) {
+            entity.setType(dto.getType());
+        }
+        if (dto.getDeveloper() != null) {
+            entity.setDeveloper(dto.getDeveloper());
+        }
     }
 }

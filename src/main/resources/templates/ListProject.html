@@ -2,30 +2,169 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <title>Project Table</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Orbitron", "Segoe UI", Tahoma, sans-serif;
+        }
+
+        body {
+            background: #0a001a;
+            color: #f0e6ff;
+            padding: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2rem;
+            color: #c084fc;
+        }
+
+        table {
+            width: 95%;
+            margin: auto;
+            border-collapse: separate;
+            border-spacing: 0;
+            border-radius: 12px;
+            overflow: hidden;
+            background: #1a0b2e;
+            border: 2px solid #8b5cf6;
+            box-shadow: 0 0 15px rgba(139, 92, 246, 0.6), 0 0 30px rgba(168, 85, 247, 0.4);
+            transition: box-shadow 0.3s ease;
+        }
+
+        table:hover {
+            box-shadow: 0 0 25px rgba(139, 92, 246, 0.8), 0 0 50px rgba(168, 85, 247, 0.6);
+        }
+
+        thead {
+            background: #6d28d9;
+        }
+
+        thead th {
+            padding: 14px;
+            color: #fff;
+            text-transform: uppercase;
+            font-weight: bold;
+            font-size: 0.95rem;
+        }
+
+        tbody tr {
+            transition: background 0.2s ease;
+        }
+
+        tbody tr:nth-child(even) {
+            background: #2a0f4e;
+        }
+
+        tbody tr:nth-child(odd) {
+            background: #1e0b3b;
+        }
+
+        tbody tr:hover {
+            background: #4c1d95;
+        }
+
+        td {
+            padding: 12px;
+            text-align: center;
+            color: #f0e6ff;
+            font-size: 0.95rem;
+            border-bottom: 1px solid #4c1d95;
+        }
+
+        td a {
+            display: inline-block;
+            margin: 3px;
+            padding: 5px 10px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            text-decoration: none;
+            color: #fff;
+            background: #9333ea;
+            transition: all 0.2s ease;
+        }
+
+        td a:hover {
+            background: #a855f7;
+        }
+
+        @media (max-width: 768px) {
+            table, thead, tbody, th, td, tr {
+                display: block;
+            }
+
+            thead {
+                display: none;
+            }
+
+            tbody tr {
+                margin-bottom: 12px;
+                border-radius: 8px;
+                overflow: hidden;
+            }
+
+            td {
+                text-align: right;
+                padding-left: 50%;
+                position: relative;
+            }
+
+            td::before {
+                content: attr(data-label);
+                position: absolute;
+                left: 12px;
+                width: 45%;
+                text-align: left;
+                font-weight: bold;
+                color: #c084fc;
+            }
+        }
+    </style>
 </head>
 <body>
-<h1>List of projects</h1>
+<h1>Projects</h1>
 <table>
     <thead>
     <tr>
-        <td>Id</td>
-        <td>Name</td>
-        <td>Difficulty</td>
-        <td>Type</td>
-        <td>Developer</td>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Difficulty</th>
+        <th>Type</th>
+        <th>Developer</th>
+        <th>Options</th>
     </tr>
     </thead>
-
-    <tr th:each ="project: ${project}">
-
-        <td th:text="${project.id}"></td>
-        <td th:text="${project.name}"></td>
-        <td th:text="${project.difficulty}"></td>
-        <td th:text="${project.type}"></td>
-        <td th:text="${project.developer}"></td>
-
+    <tbody>
+    <tr th:each="project : ${projects}">
+        <td th:text="${project.id}" data-label="ID"></td>
+        <td th:text="${project.name}" data-label="Name"></td>
+        <td th:text="${project.difficulty}" data-label="Difficulty"></td>
+        <td th:text="${project.type}" data-label="Type"></td>
+        <td data-label="Developer">
+            <span th:if="${project.developer != null and !project.developer.isEmpty()}">
+                <span th:each="developer : ${project.developer}">
+                    ID: <span th:text="${developer.id}"></span>,
+                    Name: <span th:text="${developer.name}"></span><br/>
+                </span>
+            </span>
+            <span th:if="${project.developer == null or project.developer.isEmpty()}">
+                No Developers
+            </span>
+        </td>
+        <td data-label="Options">
+            <a th:href="@{/project/ui/create}">Create</a>
+            <a th:href="@{/project/ui/list/{id}(id=${project.id})}">Details</a>
+            <a th:href="@{/project/ui/update/{id}(id=${project.id})}">Update</a>
+            <a th:href="@{/project/ui/delete/{id}(id=${project.id})}">Delete</a>
+            <a th:href="@{/developer/ui/list}">Developers</a>
+        </td>
     </tr>
-
+    </tbody>
 </table>
 </body>
 </html>

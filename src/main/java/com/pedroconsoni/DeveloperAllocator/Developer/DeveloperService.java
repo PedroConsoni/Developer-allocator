@@ -45,8 +45,10 @@ public class DeveloperService {
     public DeveloperDTO updateDeveloperByID(Long id, DeveloperDTO developerDTO) {
         Optional<DeveloperModel> existingDeveloper = developerRepository.findById(id);
         if (existingDeveloper.isPresent()) {
-            DeveloperModel updatedDeveloper = developerMapper.map(developerDTO);
-            updatedDeveloper.setId(id);
+            DeveloperModel updatedDeveloper = existingDeveloper.get();
+
+            developerMapper.updateDeveloperFromDto(developerDTO, updatedDeveloper);
+
             DeveloperModel developerSaved = developerRepository.save(updatedDeveloper);
             return developerMapper.map(developerSaved);
         }

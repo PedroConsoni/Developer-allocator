@@ -26,7 +26,7 @@ public class DeveloperModel {
     private String name;
 
     @Column(name = "age")
-    private int age;
+    private Integer age;
 
     @ManyToOne
     @JoinColumn(name = "project_id", nullable = true)

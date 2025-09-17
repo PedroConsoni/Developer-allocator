@@ -12,6 +12,6 @@ public class DeveloperDTO {
     Long id;
     private String email;
     private String name;
-    private int age;
+    private Integer age;
     private ProjectModel project;
 }

@@ -1,0 +1,135 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Show details</title>
+    <html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+        <title>Developer details</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                font-family: "Orbitron", "Segoe UI", Tahoma, sans-serif;
+            }
+
+            body {
+                background: radial-gradient(circle at top left, #0a001a, #1a0033, #0d001a);
+                color: #f0e6ff;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                min-height: 100vh;
+                padding: 20px;
+                letter-spacing: 0.5px;
+            }
+
+            div {
+                background: rgba(20, 0, 40, 0.85);
+                border: 2px solid #8b5cf6;
+                border-radius: 18px;
+                padding: 25px 35px;
+                width: 500px;
+                box-shadow: 0 0 25px rgba(168, 85, 247, 0.8), 0 0 50px rgba(139, 92, 246, 0.4);
+                backdrop-filter: blur(6px);
+                animation: fadeIn 0.6s ease-in-out;
+            }
+
+            @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(20px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+
+            h1 {
+                color: #e0c3ff;
+                text-shadow: 0 0 10px #a855f7;
+                margin-bottom: 20px;
+            }
+
+            h2, h3 {
+                color: #c084fc;
+                text-shadow: 0 0 6px #9333ea;
+                margin-bottom: 12px;
+            }
+
+            p {
+                margin-bottom: 10px;
+                color: #f0e6ff;
+                font-size: 0.95rem;
+            }
+
+            strong {
+                color: #a855f7;
+            }
+
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-top: 10px;
+                margin-bottom: 15px;
+            }
+
+            th, td {
+                border: 1px solid #6b21a8;
+                padding: 10px;
+                text-align: left;
+            }
+
+            th {
+                background: linear-gradient(135deg, #6d28d9, #9333ea);
+                color: #fff;
+                text-shadow: 0 0 4px #c084fc;
+            }
+
+            tr:nth-child(even) {
+                background: rgba(139, 92, 246, 0.1);
+            }
+
+            tr:hover {
+                background: rgba(168, 85, 247, 0.3);
+                transition: 0.3s ease;
+            }
+
+            a {
+                display: inline-block;
+                margin-top: 10px;
+                text-decoration: none;
+                font-weight: bold;
+                color: #c084fc;
+                text-shadow: 0 0 6px rgba(192, 132, 252, 0.8);
+                transition: color 0.3s ease, text-shadow 0.3s ease;
+            }
+
+            a:hover {
+                color: #e879f9;
+                text-shadow: 0 0 12px rgba(236, 72, 153, 0.9);
+            }
+        </style>
+</head>
+<body>
+<h1>Developer details</h1>
+<div>
+    <h2 th:text="${developer.name}"></h2>
+    <p><strong>Email:</strong> <span th:text="${developer.email}"></span></p>
+    <p><strong>Age:</strong> <span th:text="${developer.age}"></span></p>
+
+    <h3>Projects:</h3>
+    <table>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Difficulty</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="project : ${developer.project}">
+            <td th:text="${developer.name}"></td>
+            <td th:text="${developer.project.difficulty}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<a th:href="@{/developer/ui/list}">Back</a>
+</body>
+</html>

@@ -2,12 +2,13 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <title>Developer Table</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: "Orbitron", "Segoe UI", Tahoma, sans-serif;
+            font-family: "Roboto", sans-serif;
         }
 
         body {
@@ -17,11 +18,24 @@
             letter-spacing: 0.5px;
         }
 
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+        }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         h1 {
-            text-align: center;
+            color: #e0c3ff;
+            text-shadow: 0 0 10px #a855f7, 0 0 20px rgba(139, 92, 246, 0.5);
             margin-bottom: 30px;
             font-size: 2rem;
-            color: #c084fc;
+            text-align: center;
+            animation: fadeIn 0.8s ease-in-out;
         }
 
         table {
@@ -35,6 +49,7 @@
             border: 2px solid #8b5cf6;
             box-shadow: 0 0 15px rgba(139, 92, 246, 0.6), 0 0 30px rgba(168, 85, 247, 0.4);
             transition: box-shadow 0.3s ease;
+            animation: fadeIn 0.6s ease-in-out;
         }
 
         table:hover {
@@ -153,11 +168,11 @@
         </td>
 
         <td>
-            <a th:href="@{/developer/ui/create}">Create new developer</a>
-            <a th:href="@{/developer/ui/list/{id}(id=${developer.id})}">Show details</a>
+            <a th:href="@{/developer/ui/create}">Create</a>
+            <a th:href="@{/developer/ui/list/{id}(id=${developer.id})}">Details</a>
             <a th:href="@{/developer/ui/update/{id}(id=${developer.id})}">Update</a>
             <a th:href="@{/developer/ui/delete/{id}(id=${developer.id})}">Delete</a>
-            <a th:href="@{/project/ui/list}">Show project table</a>
+            <a th:href="@{/project/ui/list}">Projects</a>
         </td>
 
     </tr>

@@ -2,12 +2,13 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <title>Show details</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: "Orbitron", "Segoe UI", Tahoma, sans-serif;
+            font-family: "Roboto", sans-serif;
         }
 
         body {
@@ -17,16 +18,24 @@
             letter-spacing: 0.5px;
         }
 
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         h1 {
-            text-align: center;
+            color: #e0c3ff;
+            text-shadow: 0 0 10px #a855f7, 0 0 20px rgba(139, 92, 246, 0.5);
             margin-bottom: 30px;
             font-size: 2rem;
-            color: #c084fc;
+            text-align: center;
+            animation: fadeIn 0.8s ease-in-out;
         }
 
         h2 {
             color: #c084fc;
             margin-bottom: 15px;
+            text-align: center;
         }
 
         h3 {
@@ -44,6 +53,7 @@
             max-width: 700px;
             margin: auto;
             backdrop-filter: blur(6px);
+            animation: fadeIn 0.8s ease-in-out;
         }
 
         p {
@@ -151,12 +161,15 @@
 <h1>Project details</h1>
 <div>
     <h2 th:text="${project.name}"></h2>
+    <p><strong>ID:</strong> <span th:text="${project.id}"></span></p>
     <p><strong>Difficulty:</strong> <span th:text="${project.difficulty}"></span></p>
+    <p><strong>Type:</strong> <span th:text="${project.type}"></span></p>
 
     <h3>Developers:</h3>
     <table>
         <thead>
         <tr>
+            <th>ID</th>
             <th>Name</th>
             <th>Email</th>
             <th>Age</th>
@@ -164,13 +177,14 @@
         </thead>
         <tbody>
         <tr th:each="developer : ${project.developer}">
+            <td th:text="${developer.id}"></td>
             <td th:text="${developer.name}"></td>
             <td th:text="${developer.email}"></td>
             <td th:text="${developer.age}"></td>
         </tr>
         </tbody>
     </table>
+    <a class="back-btn" th:href="@{/project/ui/list}">Back</a>
 </div>
-<a th:href="@{/project/ui/list}">Back</a>
 </body>
 </html>

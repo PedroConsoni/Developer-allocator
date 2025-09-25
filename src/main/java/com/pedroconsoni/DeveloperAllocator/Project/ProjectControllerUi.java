@@ -65,7 +65,7 @@ public class ProjectControllerUi {
     @GetMapping("/update/{id}")
     public String showUpdateForm(@PathVariable Long id, Model model) {
         ProjectModel projectModel = projectRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("ID inválido: " + id));
+                .orElseThrow(() -> new IllegalArgumentException("Invalid ID " + id));
 
         ProjectDTO projectDTO = projectMapper.map(projectModel);
         model.addAttribute("project", projectDTO);
@@ -78,7 +78,7 @@ public class ProjectControllerUi {
                                     @RequestParam(required = false) String developerIds) {
 
         ProjectModel projectModel = projectRepository.findById(projectDTO.getId())
-                .orElseThrow(() -> new IllegalArgumentException("ID inválido: " + projectDTO.getId()));
+                .orElseThrow(() -> new IllegalArgumentException("Invalid ID " + projectDTO.getId()));
 
         projectModel.setName(projectDTO.getName());
         projectModel.setDifficulty(projectDTO.getDifficulty());
@@ -92,7 +92,7 @@ public class ProjectControllerUi {
 
             for (Long devId : ids) {
                 DeveloperModel dev = developerRepository.findById(devId)
-                        .orElseThrow(() -> new IllegalArgumentException("ID de developer inválido: " + devId));
+                        .orElseThrow(() -> new IllegalArgumentException("Invalid developer ID: " + devId));
                 if (dev.getProject() == null || dev.getProject().getId() != projectModel.getId()) {
                     dev.setProject(projectModel);
                     developerRepository.save(dev);

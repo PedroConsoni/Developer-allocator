@@ -1,5 +1,6 @@
 package com.pedroconsoni.DeveloperAllocator.Developer;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.http.HttpStatus;
@@ -27,7 +28,9 @@ public class DeveloperController {
             @ApiResponse(responseCode = "409", description = "Existing resource"),
             @ApiResponse(responseCode = "500", description = "Something unexpected happened on the server")
     })
-    public ResponseEntity<String> createDeveloper(@RequestBody DeveloperDTO developerDTO) {
+    public ResponseEntity<String> createDeveloper(
+            @Parameter(description = "User sends the data that will be updated along the request path")
+            @RequestBody DeveloperDTO developerDTO) {
         DeveloperDTO developer = developerService.createDeveloper(developerDTO);
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body("Developer created successfully: " + developer.getName());
@@ -54,7 +57,9 @@ public class DeveloperController {
             @ApiResponse(responseCode = "404", description = "Reported resource not found"),
             @ApiResponse(responseCode = "500", description = "Something unexpected happened on the server")
     })
-    public ResponseEntity<?> listDeveloperByID(@PathVariable Long id) {
+    public ResponseEntity<?> listDeveloperByID(
+            @Parameter(description = "User sends ID in the request path")
+            @PathVariable Long id) {
         DeveloperDTO developer = developerService.listDeveloperByID(id);
 
         if (developer != null) {
@@ -75,7 +80,11 @@ public class DeveloperController {
             @ApiResponse(responseCode = "404", description = "Reported resource not found"),
             @ApiResponse(responseCode = "500", description = "Something unexpected happened on the server")
     })
-    public ResponseEntity<?> updateDeveloperByID(@PathVariable Long id, @RequestBody DeveloperDTO updatedDeveloper) {
+    public ResponseEntity<?> updateDeveloperByID(
+            @Parameter(description = "User sends ID in the request path")
+            @PathVariable Long id,
+            @Parameter(description = "User sends the data that will be updated along the request path")
+            @RequestBody DeveloperDTO updatedDeveloper) {
         DeveloperDTO developer = developerService.updateDeveloperByID(id, updatedDeveloper);
 
         if (developer != null) {
@@ -96,7 +105,9 @@ public class DeveloperController {
             @ApiResponse(responseCode = "404", description = "Reported resource not found"),
             @ApiResponse(responseCode = "500", description = "Something unexpected happened on the server")
     })
-    public ResponseEntity<String> deleteDeveloperByID(@PathVariable Long id) {
+    public ResponseEntity<String> deleteDeveloperByID(
+            @Parameter(description = "User sends ID in the request path")
+            @PathVariable Long id) {
         if (developerService.listDeveloperByID(id) != null) {
             developerService.deleteDeveloperByID(id);
             return ResponseEntity.ok( "Developer with ID: " + id + " successfully deleted");

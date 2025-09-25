@@ -10,7 +10,7 @@ public class DeveloperMapper {
         developerModel.setId(developerDTO.getId());
         developerModel.setEmail(developerDTO.getEmail());
         developerModel.setName(developerDTO.getName());
-        developerModel.setAge(developerDTO.getAge()); // aceita null
+        developerModel.setAge(developerDTO.getAge());
         developerModel.setProject(developerDTO.getProject());
         return developerModel;
     }
@@ -20,7 +20,7 @@ public class DeveloperMapper {
         developerDTO.setId(developerModel.getId());
         developerDTO.setEmail(developerModel.getEmail());
         developerDTO.setName(developerModel.getName());
-        developerDTO.setAge(developerModel.getAge()); // aceita null
+        developerDTO.setAge(developerModel.getAge());
         developerDTO.setProject(developerModel.getProject());
         return developerDTO;
     }

@@ -3,6 +3,7 @@ import com.pedroconsoni.DeveloperAllocator.Developer.DeveloperController;
 import com.pedroconsoni.DeveloperAllocator.Developer.DeveloperDTO;
 import com.pedroconsoni.DeveloperAllocator.Developer.DeveloperModel;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.http.HttpStatus;
@@ -31,7 +32,9 @@ public class ProjectController {
             @ApiResponse(responseCode = "409", description = "Existing resource"),
             @ApiResponse(responseCode = "500", description = "Something unexpected happened on the server")
     })
-    public ResponseEntity<String> createProject(@RequestBody ProjectDTO projectDTO) {
+    public ResponseEntity<String> createProject(
+            @Parameter(description = "User sends the data that will be updated along the request path")
+            @RequestBody ProjectDTO projectDTO) {
         ProjectDTO project = projectService.createProject(projectDTO);
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body("Project created successfully: " + project.getName());
@@ -58,7 +61,9 @@ public class ProjectController {
             @ApiResponse(responseCode = "404", description = "Reported resource not found"),
             @ApiResponse(responseCode = "500", description = "Something unexpected happened on the server")
     })
-    public ResponseEntity<?> listProjectsByID(@PathVariable Long id) {
+    public ResponseEntity<?> listProjectsByID(
+            @Parameter(description = "User sends ID in the request path")
+            @PathVariable Long id) {
         ProjectDTO project = projectService.listProjectByID(id);
 
         if (project != null) {
@@ -79,7 +84,11 @@ public class ProjectController {
             @ApiResponse(responseCode = "404", description = "Reported resource not found"),
             @ApiResponse(responseCode = "500", description = "Something unexpected happened on the server")
     })
-    public ResponseEntity<?> updateProjectByID(@PathVariable Long id, @RequestBody ProjectDTO updatedProject) {
+    public ResponseEntity<?> updateProjectByID(
+            @Parameter(description = "User sends ID in the request path")
+            @PathVariable Long id,
+            @Parameter(description = "User sends the data that will be updated along the request path")
+            @RequestBody ProjectDTO updatedProject) {
         ProjectDTO project = projectService.updateProjectByID(id, updatedProject);
 
         if (project != null) {
@@ -100,7 +109,9 @@ public class ProjectController {
             @ApiResponse(responseCode = "404", description = "Reported resource not found"),
             @ApiResponse(responseCode = "500", description = "Something unexpected happened on the server")
     })
-    public ResponseEntity<String> deleteProjectByID(@PathVariable Long id) {
+    public ResponseEntity<String> deleteProjectByID(
+            @Parameter(description = "User sends ID in the request path")
+            @PathVariable Long id) {
         if (projectService.listProjectByID(id) != null) {
             projectService.deleteProjectByID(id);
             return ResponseEntity.ok("Project with ID: " + id + " successfully deleted");

@@ -59,7 +59,7 @@ public class DeveloperControllerUi {
     @GetMapping("/update/{id}")
     public String showUpdateForm(@PathVariable Long id, Model model) {
         DeveloperModel developerModel = developerRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("ID inválido: " + id));
+                .orElseThrow(() -> new IllegalArgumentException("Invalid ID: " + id));
 
         DeveloperDTO developerDTO = developerMapper.map(developerModel);
         model.addAttribute("developer", developerDTO);
@@ -69,7 +69,7 @@ public class DeveloperControllerUi {
     @PostMapping("/saveUpdate")
     public String saveUpdateDeveloper(@ModelAttribute("developer") DeveloperDTO developerDTO) {
         DeveloperModel developerModel = developerRepository.findById(developerDTO.getId())
-                .orElseThrow(() -> new IllegalArgumentException("ID inválido: " + developerDTO.getId()));
+                .orElseThrow(() -> new IllegalArgumentException("Invalid ID: " + developerDTO.getId()));
 
         developerMapper.updateDeveloperFromDto(developerDTO, developerModel);
         developerRepository.save(developerModel);

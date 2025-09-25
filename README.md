@@ -9,12 +9,12 @@ The API was implemented following best practices in architecture, documentation,
 - Relationship: **One-To-Many** (Project → Developers).
 
 ## Technologies Used
-- ✅ **Java & Spring** – robust and scalable development  
-- ✅ **Swagger** – clear and interactive API documentation  
-- ✅ **H2 Database** – fast and efficient testing  
-- ✅ **Migration** – database versioning  
-- ✅ **Git & GitHub** – source code version control  
-- ✅ **Layered Architecture** – responsibility separation and organized code  
+-  **Java & Spring** – robust and scalable development  
+-  **Swagger** – clear and interactive API documentation  
+-  **H2 Database** – fast and efficient testing  
+-  **Migration** – database versioning  
+-  **Git & GitHub** – source code version control  
+-  **Layered Architecture** – responsibility separation and organized code  
 
 ## Project Structure
 - `controller/` → API layer  
@@ -23,4 +23,17 @@ The API was implemented following best practices in architecture, documentation,
 - `model/` → Entity definitions  
 
 ## Documentation
-After running the application, access the API documentation via Swagger
+1. Clone this repository:
+   ```bash
+   git clone https://github.com/PedroConsoni/Developer-Allocator.git
+   cd Developer-Allocator
+   ```
+2. Run the application with Maven
+      ```
+      ./mvnw spring-boot:run
+      ```
+3. Open your browser and go to:
+   ```
+   http://localhost:8080/swagger-ui/index.html#/
+   ```
+

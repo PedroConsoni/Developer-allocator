@@ -28,7 +28,7 @@ The API was implemented following best practices in architecture, documentation,
    git clone https://github.com/PedroConsoni/Developer-Allocator.git
    cd Developer-Allocator
    ```
-2. Run the application with Maven
+2. Run the application with Maven:
       ```
       ./mvnw spring-boot:run
       ```

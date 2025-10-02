@@ -1,3 +1,5 @@
+O README que você está acessando está em Português-BR, caso prefira acessar o README em inglês, [clique aqui](README.md)
+
 # Developer Allocator
 
 Este projeto é uma **API** construída com **Java e Spring**, projetada para gerenciar o relacionamento entre **Desenvolvedores** e **Projetos**.

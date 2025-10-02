@@ -1,4 +1,4 @@
-O README que você está acessando está em Português-BR, caso prefira acessar o README em inglês, [clique aqui](README.md)
+The README you are accessing is in Portuguese-BR, if you prefer to access the README in English, [click here](README.md)
 
 # Developer Allocator
 
